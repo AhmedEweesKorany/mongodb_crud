@@ -1,13 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Product = require("./models/product.model")
+require('dotenv').config()
 const app = express();
 const port = 3010;
 app.use(express.json())
 // init connection with mongog db
 mongoose
   .connect(
-    `mongodb+srv://ahmedewaisvi34:Ej5jMNZ6uUu5JU3T@backenddb.kuvlevq.mongodb.net/Node-API?retryWrites=true&w=majority&appName=BackendDB`
+    process.env.DATABASE_URL
   )
   .then(() => {
     console.log("connected to daabase");
